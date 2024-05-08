@@ -1,8 +1,6 @@
 #pragma once
 #include "Vector3.h"
 #include <string>
-namespace MathClasses
-{
     struct Matrix3
     {
 
@@ -191,4 +189,3 @@ namespace MathClasses
             return MakeTranslation(other.x, other.y, other.z);
         }
 	};
-}

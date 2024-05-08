@@ -1,7 +1,5 @@
 #pragma once
 
-namespace MathClasses
-{
     struct Colour
     {
         unsigned int colour;
@@ -71,4 +69,3 @@ namespace MathClasses
             return false;
         }
     };
-}
