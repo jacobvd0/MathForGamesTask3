@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 
+namespace MathClasses
+{
     struct Vector3
     {
 
@@ -10,7 +12,7 @@
         {
         }
 
-        Vector3(float x,float y,float z)
+        Vector3(float x, float y, float z)
         {
             this->x = x;
             this->y = y;
@@ -26,15 +28,15 @@
             //struct { float r, g, b; };
             float data[3];
         };
-        
+
         // [] Operator
         float& operator [](int dim) {
             return data[dim];
         }
 
-        
+
         operator float* () { return data; }
-        
+
         operator const float* () const { return data; };
 
         // + Operator
@@ -57,7 +59,7 @@
 
             return sum;
         }
-        
+
         // * Operator
         Vector3 operator *(const Vector3& rhs) const {
             Vector3 sum;
@@ -139,7 +141,7 @@
             else {
                 x = y = z = 0;
             }
-            
+
         }
 
         // Normalised
@@ -160,4 +162,7 @@
                 z * other.x - x * other.z,
                 x * other.y - y * other.x);
         }
-	};
+    };
+
+
+}

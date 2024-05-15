@@ -1,7 +1,9 @@
 #pragma once
-#include <vector>
 #include "Vector3.h"
 #include "Matrix3.h"
+#include <vector>
+
+using namespace MathClasses;
 class GameObject
 {
 protected:
