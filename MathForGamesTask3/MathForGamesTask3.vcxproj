@@ -130,6 +130,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MathForGamesTask3.cpp" />
     <ClCompile Include="SpriteObject.cpp" />
+    <ClCompile Include="TankPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="SpriteObject.h" />
+    <ClInclude Include="TankPlayer.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
   </ItemGroup>

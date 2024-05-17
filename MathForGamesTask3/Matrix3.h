@@ -1,6 +1,8 @@
 #pragma once
 #include "Vector3.h"
 #include <string>
+namespace math
+{
     struct Matrix3
     {
 
@@ -40,7 +42,7 @@
             float v[9];
             float mm[3][3];
 
-            Vector3 axis[3];
+            math::Vector3 axis[3];
         };
 
         static Matrix3 MakeIdentity() {
@@ -85,7 +87,7 @@
             Matrix3 result;
 
             for (size_t i = 0; i < 3; i++) {
-                Vector3 row(mm[0][i], mm[1][i], mm[2][i]);
+                math::Vector3 row(mm[0][i], mm[1][i], mm[2][i]);
 
                 for (size_t j = 0; j < 3; j++) {
                     result.mm[j][i] = row.Dot(rhs.axis[j]);
@@ -94,11 +96,11 @@
             return result;
         }
 
-        Vector3 operator *(Vector3 rhs) const {
-            return Vector3(
-                Vector3(m1, m4, m7).Dot(rhs),
-                Vector3(m2, m5, m8).Dot(rhs),
-                Vector3(m3, m6, m9).Dot(rhs)
+        math::Vector3 operator *(math::Vector3 rhs) const {
+            return math::Vector3(
+                math::Vector3(m1, m4, m7).Dot(rhs),
+                math::Vector3(m2, m5, m8).Dot(rhs),
+                math::Vector3(m3, m6, m9).Dot(rhs)
             );
         }
 
@@ -109,21 +111,21 @@
         */
 
         bool operator ==(Matrix3 rhs) const {
-            Vector3 check1(m1, m4, m7);
-            Vector3 check2(m2, m5, m8);
-            Vector3 check3(m3, m6, m9);
+            math::Vector3 check1(m1, m4, m7);
+            math::Vector3 check2(m2, m5, m8);
+            math::Vector3 check3(m3, m6, m9);
 
-            if (check1 == Vector3(rhs.m1, rhs.m4, rhs.m7) && check2 == Vector3(rhs.m2, rhs.m5, rhs.m8) && check3 == Vector3(rhs.m3, rhs.m6, rhs.m9))
+            if (check1 == math::Vector3(rhs.m1, rhs.m4, rhs.m7) && check2 == math::Vector3(rhs.m2, rhs.m5, rhs.m8) && check3 == math::Vector3(rhs.m3, rhs.m6, rhs.m9))
                 return true;
             return false;
         }
 
         bool operator !=(Matrix3 rhs) const {
-            Vector3 check1(m1, m4, m7);
-            Vector3 check2(m2, m5, m8);
-            Vector3 check3(m3, m6, m9);
+            math::Vector3 check1(m1, m4, m7);
+            math::Vector3 check2(m2, m5, m8);
+            math::Vector3 check3(m3, m6, m9);
 
-            if (check1 == Vector3(rhs.m1, rhs.m4, rhs.m7) && check2 == Vector3(rhs.m2, rhs.m5, rhs.m8) && check3 == Vector3(rhs.m3, rhs.m6, rhs.m9))
+            if (check1 == math::Vector3(rhs.m1, rhs.m4, rhs.m7) && check2 == math::Vector3(rhs.m2, rhs.m5, rhs.m8) && check3 == math::Vector3(rhs.m3, rhs.m6, rhs.m9))
                 return false;
             return true;
         }
@@ -152,7 +154,7 @@
             return (z * y * x);
         }
 
-        static Matrix3 MakeEuler(Vector3 vector) {
+        static Matrix3 MakeEuler(math::Vector3 vector) {
             return MakeEuler(vector.x, vector.y, vector.z);
         }
 
@@ -169,7 +171,7 @@
         }
 
 
-        static Matrix3 MakeScale(Vector3 scale) {
+        static Matrix3 MakeScale(math::Vector3 scale) {
             return MakeScale(scale.x, scale.y, scale.z);
         }
 
@@ -185,7 +187,8 @@
                 x, y, z);
         }
 
-        static Matrix3 MakeTranslation(Vector3 other) {
+        static Matrix3 MakeTranslation(math::Vector3 other) {
             return MakeTranslation(other.x, other.y, other.z);
         }
-	};
+    };
+}

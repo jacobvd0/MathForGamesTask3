@@ -1,6 +1,7 @@
 #include <iostream>
 #include "raylib-cpp.hpp"
 #include "SpriteObject.h"
+#include "TankPlayer.h"
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
 
     raylib::Texture2D tankSprite("res/tankBody_blue_outline.png");
 
-    SpriteObject Player;
+    TankPlayer Player;
     Player.Sprite = &tankSprite;
     Player.SetLocalPosition(screenWidth / 2, screenHeight / 2);
 
@@ -29,4 +30,5 @@ int main()
         EndDrawing();
     }
     return 0;
+
 }

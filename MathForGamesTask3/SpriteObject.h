@@ -6,7 +6,7 @@ class SpriteObject : public GameObject
 {
 public:
 	raylib::Texture2D* Sprite;
-	Vector3 Origin;
+	math::Vector3 Origin;
 
 	Colour Tint;
 

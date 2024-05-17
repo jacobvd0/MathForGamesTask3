@@ -2,16 +2,15 @@
 #include "Vector3.h"
 #include "Matrix3.h"
 #include <vector>
-
-using namespace MathClasses;
+ 
 class GameObject
 {
 protected:
-    Vector3 LocalPosition;
+    math::Vector3 LocalPosition;
 
     float LocalRotation;
 
-    Vector3 LocalScale;
+    math::Vector3 LocalScale;
 
 
     GameObject* Parent;
@@ -38,35 +37,35 @@ public:
     const GameObject* GetChild(size_t childIndex)const ;
 
 
-    Vector3 GetLocalPosition() const;
-    void SetLocalPosition(Vector3 newPosition);
+    math::Vector3 GetLocalPosition() const;
+    void SetLocalPosition(math::Vector3 newPosition);
     void SetLocalPosition(float newX, float newY);
 
-    Vector3 GetWorldPosition() const;
+    math::Vector3 GetWorldPosition() const;
 
     float GetLocalRotation() const;
     void SetLocalRotation(float newRotation);
 
     float GetWorldRotation() const;
     
-    Vector3 GetLocalScale() const;
-    void SetLocalScale(Vector3 newScale);
+    math::Vector3 GetLocalScale() const;
+    void SetLocalScale(math::Vector3 newScale);
     void SetLocalScale(float newX, float newY);
 
-    Vector3 GetWorldScale() const;
+    math::Vector3 GetWorldScale() const;
 
-    Vector3 GetForward() const;
+    math::Vector3 GetForward() const;
 
-    Matrix3 GetLocalMatrix() const;
-    Matrix3 GetWorldMatrix() const;
+    math::Matrix3 GetLocalMatrix() const;
+    math::Matrix3 GetWorldMatrix() const;
 
     void Translate(float x, float y);
-    void Translate(Vector3 translation);
+    void Translate(math::Vector3 translation);
 
     void Rotate(float radians);
 
     void Scale(float x, float y);
-    void Scale(Vector3 scaling);
+    void Scale(math::Vector3 scaling);
 
     
     float AngleFrom2D(float _x, float _y) const;

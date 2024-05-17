@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-namespace MathClasses
+namespace math
 {
     struct Vector3
     {

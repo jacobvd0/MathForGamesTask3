@@ -6,6 +6,7 @@
 */
 
 #include "Vector4.h"
+#include "Vector3.h"
 #pragma once
 namespace MathClasses
 {
@@ -186,7 +187,7 @@ namespace MathClasses
             return MakeTranslation(other.x, other.y, other.z);
         }
 
-        static Matrix4 MakeTranslation(Vector3 other) {
+        static Matrix4 MakeTranslation(math::Vector3 other) {
             return MakeTranslation(other.x, other.y, other.z);
         }
 
@@ -204,7 +205,7 @@ namespace MathClasses
                 0.0f, 0.0f, 0.0f, 1);
         }
 
-        static Matrix4 MakeScale(Vector3 other) {
+        static Matrix4 MakeScale(math::Vector3 other) {
             return MakeScale(other.x, other.y, other.z);
         }
 
@@ -237,7 +238,7 @@ namespace MathClasses
             return (z * y * x);
         }
 
-        static Matrix4 MakeEuler(Vector3 vector) {
+        static Matrix4 MakeEuler(math::Vector3 vector) {
             return MakeEuler(vector.x, vector.y, vector.z);
         }
 	};
