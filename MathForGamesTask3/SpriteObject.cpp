@@ -18,6 +18,6 @@ void SpriteObject::OnDraw()
 		raylib::Rectangle(0, 0, (float)Sprite->width, (float)Sprite->height),
 		raylib::Rectangle(pos.x, pos.y, Sprite->width * scl.x, Sprite->height * scl.y),
 		raylib::Vector2(Sprite->width * Origin.x * scl.x, Sprite->height * Origin.y * scl.y),
-		rot, // may need to change this check https://aie.instructure.com/courses/1344/pages/maths-for-games-timing-tutorial
+		rot,
 		raylib::Color(Tint.colour));
 }
