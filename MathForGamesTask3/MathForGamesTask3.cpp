@@ -6,6 +6,7 @@
 
 int main()
 {
+    // Creating the raylib window
     int screenWidth = 800;
     int screenHeight = 450;
     raylib::Color textColor = raylib::Color::LightGray();
@@ -13,13 +14,16 @@ int main()
 
     SetTargetFPS(60);
 
+    // Sprites
     raylib::Texture2D tankSprite("res/tankBody_blue_outline.png");
     raylib::Texture2D turretSprite("res/tankBlue_barrel2_outline.png");
 
+    // Creating the player
     TankPlayer Player;
     Player.Sprite = &tankSprite;
     Player.SetLocalPosition(screenWidth / 2, screenHeight / 2);
 
+    // Creating the tank's turret
     TankTurret PlayerTurret;
     PlayerTurret.Sprite = &turretSprite;
     PlayerTurret.SetLocalPosition(0,0);
@@ -29,10 +33,7 @@ int main()
     while (!window.ShouldClose()) {
         float deltaTime = window.GetFrameTime();
         PlayerTurret.Update(deltaTime);
-        Player.Update(deltaTime);
-
-        std::cout << "Turret Loc: " << PlayerTurret.GetLocalPosition().ToString() << std::endl;
-        
+        Player.Update(deltaTime);        
 
         BeginDrawing();
         {

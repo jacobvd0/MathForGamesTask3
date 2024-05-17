@@ -14,5 +14,4 @@ void TankTurret::OnUpdate(float deltaTime)
 	}
 
 	Rotate(rotation * deltaTime);
-	//Translate(0, (rotation * deltaTime) * 22);
 }
