@@ -39,6 +39,7 @@ void TankTurret::OnUpdate(float deltaTime)
 				bullets[i]->Sprite = new raylib::Texture2D("res/bulletBlue1_outline.png");
 				bullets[i]->SetLocalPosition(GetWorldPosition());
 				bullets[i]->SetLocalRotation(GetWorldRotation());
+				std::cout << "Bullet shot num " << i << std::endl;
 				success = true;
 				break;
 			}
