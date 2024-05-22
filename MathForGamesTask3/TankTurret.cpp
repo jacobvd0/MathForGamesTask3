@@ -1,12 +1,12 @@
 #include "TankTurret.h"
 
-void TankTurret::InitArray()
-{
-	for (int i = 0; i < 100; i++) {
-		delete bullets[i];
-		bullets[i] = nullptr;
-	}
-}
+//void TankTurret::InitArray()
+//{
+//	for (int i = 0; i < 100; i++) {
+//		delete bullets[i];
+//		bullets[i] = nullptr;
+//	}
+//}
 
 void TankTurret::OnUpdate(float deltaTime)
 {
@@ -29,21 +29,28 @@ void TankTurret::OnUpdate(float deltaTime)
 	// Make it continue in the direction it was shot
 	// Set the location and rotation to be correct
 	// and probably more
+	cooldownTimer += deltaTime;
 	if (IsKeyDown(KeyboardKey::KEY_SPACE)) { // space
-		bool success = false;
+		if (shootCooldown <= cooldownTimer) {
+			bool success = false;
 
-		// Loops through all bullets in the array to find a null one
-		for (int i = 0; i < 100; i++) {
-			if (bullets[i] == nullptr) {				
-				bullets[i] = new TankBullet;
-				bullets[i]->Sprite = new raylib::Texture2D("res/bulletBlue1_outline.png");
-				bullets[i]->SetLocalPosition(GetWorldPosition());
-				bullets[i]->SetLocalRotation(GetWorldRotation());
-				success = true;
-				break;
+			// Loops through all bullets in the array to find a null one
+			for (int i = 0; i < 100; i++) {
+				if (bullets[i] == nullptr) {
+					bullets[i] = new TankBullet;
+					bullets[i]->Sprite = new raylib::Texture2D("res/bulletBlue1_outline.png");
+					bullets[i]->SetLocalPosition(GetWorldPosition() + (GetForward() * 73));
+					bullets[i]->SetLocalRotation(GetWorldRotation());
+					success = true;
+					cooldownTimer = 0;
+					break;
+				}
 			}
+			if (!success) { std::cout << "No space in the bullets array\n"; }
 		}
-		if (!success) { std::cout << "No space in the bullets array\n"; }
+		
+
+		
 		
 		
 		
@@ -52,9 +59,29 @@ void TankTurret::OnUpdate(float deltaTime)
 	// Updates for tank bullets
 	for (int i = 0; i < 100; i++) {
 		if (bullets[i] != nullptr) {
+			int screenWidth = GetScreenWidth();
+			int screenHeight = GetScreenHeight();
 
 			// Checks if the bullet is older than the max time
 			if (bullets[i]->aliveTime >= bullets[i]->maxAliveTime) {
+				delete bullets[i]->Sprite;
+				bullets[i]->Sprite = nullptr;
+
+				delete bullets[i];
+				bullets[i] = nullptr;
+			}
+
+			// Checking if the bullet goes past the left and top of the screen
+			else if (bullets[i]->GetLocalPosition().x <= -10 || bullets[i]->GetLocalPosition().y <= -10) {
+				delete bullets[i]->Sprite;
+				bullets[i]->Sprite = nullptr;
+
+				delete bullets[i];
+				bullets[i] = nullptr;
+			}
+		
+			// Checking if the bullet goes past the right and bottom of the screen
+			else if (bullets[i]->GetLocalPosition().x >= (screenWidth + 10) || bullets[i]->GetLocalPosition().y >= (screenHeight + 10)) {
 				delete bullets[i]->Sprite;
 				bullets[i]->Sprite = nullptr;
 
