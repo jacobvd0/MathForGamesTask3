@@ -27,6 +27,11 @@ void TankTurret::OnUpdate(float deltaTime)
 		SpriteObject Bullet;
 		Bullet.Sprite = &bulletSprite;
 		Bullet.SetLocalPosition(GetWorldPosition());
+		BeginDrawing();
+		{
+			Bullet.Draw();
+		}
+		EndDrawing();
 		
 	}
 	
