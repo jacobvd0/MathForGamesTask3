@@ -69,4 +69,8 @@ public:
 
     
     float AngleFrom2D(float _x, float _y) const;
+
+
+    // If true the tank cant go through and bullets despawn on impact
+    bool solid = false;
 };

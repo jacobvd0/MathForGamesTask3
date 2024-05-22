@@ -4,12 +4,13 @@
 #include "TankPlayer.h"
 #include "TankTurret.h"
 
+// TODO: make an array with all objects in it then pass to bullets so the collision checks can be done in TankBullet.cpp
 
 int main()
 {
     // Creating the raylib window
     int screenWidth = 800;
-    int screenHeight = 450;
+    int screenHeight = 600;
     raylib::Color textColor = raylib::Color::LightGray();
     raylib::Window window(screenWidth, screenHeight, "MathForGames - Task 3");
 
@@ -18,6 +19,7 @@ int main()
     // Sprites
     raylib::Texture2D tankSprite("res/tankBody_blue_outline.png");
     raylib::Texture2D turretSprite("res/tankBlue_barrel2_outline.png");
+    raylib::Texture2D crateSprite("res/crateMetal.png");
 
     // Creating the player
     TankPlayer Player;
@@ -30,20 +32,30 @@ int main()
     PlayerTurret.SetLocalPosition(0,0);
     PlayerTurret.SetParent(&Player);
     PlayerTurret.Origin = math::Vector3(0, 0.5, 0);
+    
+
+    // Scenery objects
+    SpriteObject Crate;
+    Crate.Sprite = &crateSprite;
+    Crate.SetLocalPosition(screenWidth / 2 + 200, screenHeight / 2 - 150);
+    Crate.solid = true; // stops the tank and bullets moving through
 
     // Game Loop
     while (!window.ShouldClose()) {
         float deltaTime = window.GetFrameTime();
         PlayerTurret.Update(deltaTime);
         Player.Update(deltaTime);        
+        Crate.Update(deltaTime);
 
         BeginDrawing();
         {
             window.ClearBackground(RAYWHITE);
             Player.Draw();
             PlayerTurret.Draw();
+            Crate.Draw();
         }
         EndDrawing();
+
     }
     return 0;
 
