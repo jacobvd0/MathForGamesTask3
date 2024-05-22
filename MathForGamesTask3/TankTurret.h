@@ -5,7 +5,6 @@ class TankTurret : public SpriteObject
 {
 public:
 	TankBullet *bullets[100];
-	//void InitArray();
 
 	float cooldownTimer = 0.5f;
 	float shootCooldown = 0.5f;

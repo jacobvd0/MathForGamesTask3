@@ -1,13 +1,5 @@
 #include "TankTurret.h"
 
-//void TankTurret::InitArray()
-//{
-//	for (int i = 0; i < 100; i++) {
-//		delete bullets[i];
-//		bullets[i] = nullptr;
-//	}
-//}
-
 void TankTurret::OnUpdate(float deltaTime)
 {
 	// Turret Rotation
@@ -24,11 +16,8 @@ void TankTurret::OnUpdate(float deltaTime)
 	Rotate(rotation * deltaTime);
 
 
-	// Turret shooting (WIP)
-	// TODO: Make it update each bullet when the tank turret's update function is called and the same with drawing
-	// Make it continue in the direction it was shot
-	// Set the location and rotation to be correct
-	// and probably more
+
+	// Turret shooting
 	cooldownTimer += deltaTime;
 	if (IsKeyDown(KeyboardKey::KEY_SPACE)) { // space
 		if (shootCooldown <= cooldownTimer) {
@@ -46,14 +35,10 @@ void TankTurret::OnUpdate(float deltaTime)
 					break;
 				}
 			}
+			// Prints out a debug message if theres no room left in the array
+			// this shouldn't happen since bullets despawning free up space
 			if (!success) { std::cout << "No space in the bullets array\n"; }
 		}
-		
-
-		
-		
-		
-		
 	}
 
 	// Updates for tank bullets

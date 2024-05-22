@@ -31,6 +31,7 @@ int main()
     PlayerTurret.SetParent(&Player);
     PlayerTurret.Origin = math::Vector3(0, 0.5, 0);
 
+    // Game Loop
     while (!window.ShouldClose()) {
         float deltaTime = window.GetFrameTime();
         PlayerTurret.Update(deltaTime);

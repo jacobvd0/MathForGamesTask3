@@ -7,6 +7,5 @@ public:
 	float maxAliveTime = 10.0f;
 protected:
 	void OnUpdate(float deltaTime) override;
-	//void OnDraw() override;
 };
 
