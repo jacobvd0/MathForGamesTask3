@@ -52,6 +52,7 @@ int main()
 
         // Collision checks
         raylib::Rectangle crateRect(Crate.GetWorldPosition().x - Crate.Origin.x-27, Crate.GetWorldPosition().y - 27, crateSprite.width * Crate.GetWorldScale().x, crateSprite.height * Crate.GetWorldScale().y);
+        
         //raylib::Rectangle tankRect(Player.GetWorldPosition().x-42, Player.GetWorldPosition().y - 42, tankSprite.width * Player.GetWorldScale().x, tankSprite.height * Player.GetWorldScale().y);
 
         //if (CheckCollisionRecs(crateRect, tankRect)) {
@@ -73,6 +74,7 @@ int main()
         // Drawing
         BeginDrawing();
         {
+
             window.ClearBackground(RAYWHITE);
             Crate.Draw();
             Player.Draw();
