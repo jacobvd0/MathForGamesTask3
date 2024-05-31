@@ -2,6 +2,8 @@
 
 void TankTurret::OnUpdate(float deltaTime)
 {
+	hitbox.SetVars(GetWorldPosition() - (Sprite->width / 2), GetWorldPosition() + (Sprite->height / 2));
+
 	// Turret Rotation
 	const float ROTATESPEED = 2.0f;
 	float rotation = 0.0f;
@@ -30,6 +32,10 @@ void TankTurret::OnUpdate(float deltaTime)
 					bullets[i]->Sprite = new raylib::Texture2D("res/bulletBlue1_outline.png");
 					bullets[i]->SetLocalPosition(GetWorldPosition() + (GetForward() * 73));
 					bullets[i]->SetLocalRotation(GetWorldRotation());
+
+					raylib::Texture2D tmpSprite("res/bulletBlue1_outline.png");
+
+					bullets[i]->hitbox.SetVars(bullets[i]->GetWorldPosition() - (tmpSprite.width / 2), bullets[i]->GetWorldPosition() + (tmpSprite.height / 2));
 					success = true;
 					cooldownTimer = 0;
 					break;
@@ -77,6 +83,10 @@ void TankTurret::OnUpdate(float deltaTime)
 			// Updates the bullet
 			else {
 				bullets[i]->Update(deltaTime);
+				math::Vector3 turretWorldPos = GetWorldPosition();
+				raylib::Texture2D tmpSprite("res/bulletBlue1_outline.png");
+
+				bullets[i]->hitbox.SetVars(bullets[i]->GetWorldPosition() - (tmpSprite.width / 2), bullets[i]->GetWorldPosition() + (tmpSprite.height / 2));
 			}
 		}
 	}

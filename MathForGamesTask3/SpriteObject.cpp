@@ -21,3 +21,9 @@ void SpriteObject::OnDraw()
 		rot,
 		raylib::Color(Tint.colour));
 }
+
+void SpriteObject::OnUpdate(float deltaTime)
+{
+	hitbox.SetVars(GetWorldPosition() - (Sprite->width / 2), GetWorldPosition() + (Sprite->height / 2));
+	std::cout << "Works\n";
+}

@@ -2,6 +2,7 @@
 #include "Vector3.h"
 #include "Matrix3.h"
 #include <vector>
+#include "AABB.h"
  
 class GameObject
 {
@@ -70,6 +71,8 @@ public:
     
     float AngleFrom2D(float _x, float _y) const;
 
+
+    AABB hitbox;
 
     // If true the tank cant go through and bullets despawn on impact
     bool solid = false;

@@ -3,21 +3,25 @@
 #include <vector>
 #include "Utils.h"
 
-using namespace math;
-
 struct AABB {
 	AABB() {}
-	AABB(const Vector3& min, const Vector3& max) : min(min), max(max) {}
+	AABB(const math::Vector3& min, const math::Vector3& max) : min(min), max(max) {}
 
-	Vector3 min, max;
+	math::Vector3 min, max;
 	Utils utils;
 
-	Vector3 Center() const {
+	void SetVars(const math::Vector3& _min, const math::Vector3& _max) {
+		min = _min;
+		max = _max;
+		//std::cout << "Set min to " << _min.ToString() << " and max to " << _max.ToString() << "\n";
+	}
+
+	math::Vector3 Center() const {
 		return (min + max) * 0.5f;
 	}
 
-	std::vector<Vector3> Corners() const {
-		std::vector<Vector3> corners(4);
+	std::vector<math::Vector3> Corners() const {
+		std::vector<math::Vector3> corners(4);
 
 		corners[0] = min;
 		corners[1] = { min.x, max.y, 0 };
@@ -25,7 +29,7 @@ struct AABB {
 		corners[3] = { max.x, min.y, 0 };
 	}
 
-	void fit(const Vector3* points, unsigned int count) {
+	void fit(const math::Vector3* points, unsigned int count) {
 		min = { FLT_MAX, FLT_MAX, 0 };
 		max = { FLT_MIN, FLT_MIN, 0 };
 
@@ -36,7 +40,7 @@ struct AABB {
 
 	}
 
-	void Fit(const std::vector<Vector3>& points) {
+	void Fit(const std::vector<math::Vector3>& points) {
 		min = { FLT_MAX, FLT_MAX, 0 };
 		max = { -FLT_MAX, -FLT_MAX, 0 };
 
@@ -46,12 +50,16 @@ struct AABB {
 		}
 	}
 
-	bool Overlaps(const Vector3& p) const
+	bool Overlaps(const math::Vector3& p) const
 	{
 		return !(p.x < min.x || p.y < min.y || p.x > max.x || p.y > max.y);
 	}
 
-	Vector3 ClosestPoint(const Vector3& p) {
+	bool Overlaps(const AABB& other) const {
+		return !(max.x < other.min.x || max.y < other.min.y || min.x > other.max.x || min.y > other.max.y);
+	}
+
+	math::Vector3 ClosestPoint(const math::Vector3& p) {
 		return utils.clamp(p, min, max);
 	}
 };

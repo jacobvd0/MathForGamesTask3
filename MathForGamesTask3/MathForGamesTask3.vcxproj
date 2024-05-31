@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="AABB.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MathForGamesTask3.cpp" />
     <ClCompile Include="SpriteObject.cpp" />
@@ -139,7 +139,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Box.h" />
+    <ClInclude Include="AABB.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Colour.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Matrix3.h" />

@@ -2,6 +2,8 @@
 #include "raylib-cpp.hpp"
 #include "Colour.h"
 #include "GameObject.h"
+#include "AABB.h"
+
 class SpriteObject : public GameObject
 {
 public:
@@ -13,5 +15,6 @@ public:
 	SpriteObject();
 protected:
 	void OnDraw() override;
+	void OnUpdate(float deltaTime) override;
 };
 

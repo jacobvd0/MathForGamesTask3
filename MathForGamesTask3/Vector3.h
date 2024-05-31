@@ -49,6 +49,16 @@ namespace math
             return sum;
         }
 
+        // + Operator (float)
+        Vector3 operator +(const float num) const {
+            Vector3 sum;
+            sum.x = x + num;
+            sum.y = y + num;
+            sum.z = z + num;
+
+            return sum;
+        }
+
         // - Operator
         Vector3 operator -(const Vector3& rhs) const {
             Vector3 sum;
@@ -56,6 +66,17 @@ namespace math
             sum.x = x - rhs.x;
             sum.y = y - rhs.y;
             sum.z = z - rhs.z;
+
+            return sum;
+        }
+
+        // - Operator (float)
+        Vector3 operator -(const float num) const {
+            Vector3 sum;
+
+            sum.x = x - num;
+            sum.y = y - num;
+            sum.z = z - num;
 
             return sum;
         }

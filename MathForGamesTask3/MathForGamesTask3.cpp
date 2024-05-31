@@ -38,6 +38,8 @@ int main()
     Crate.Sprite = &crateSprite;
     Crate.SetLocalPosition(screenWidth / 2 + 200, screenHeight / 2 - 150);
     Crate.solid = true; // stops the tank and bullets moving through
+    math::Vector3 crateWorldPos = Crate.GetWorldPosition();
+    Crate.hitbox.SetVars(crateWorldPos - (crateSprite.width / 2), crateWorldPos + (crateSprite.height / 2));
 
     // Game Loop
     while (!window.ShouldClose()) {
@@ -50,6 +52,7 @@ int main()
 
         // Collision checks
         raylib::Rectangle crateRect(Crate.GetWorldPosition().x - Crate.Origin.x-27, Crate.GetWorldPosition().y - 27, crateSprite.width * Crate.GetWorldScale().x, crateSprite.height * Crate.GetWorldScale().y);
+
         
         //raylib::Rectangle tankRect(Player.GetWorldPosition().x-42, Player.GetWorldPosition().y - 42, tankSprite.width * Player.GetWorldScale().x, tankSprite.height * Player.GetWorldScale().y);
 
@@ -60,11 +63,15 @@ int main()
         for (int i = 0; i < 100; i++) {
             if (PlayerTurret.bullets[i] != nullptr) {
                 raylib::Rectangle bulletRect(PlayerTurret.bullets[i]->GetWorldPosition().x - 12, PlayerTurret.bullets[i]->GetWorldPosition().y - 8, bulletSprite.width * PlayerTurret.bullets[i]->GetWorldScale().x, bulletSprite.height * PlayerTurret.bullets[i]->GetWorldScale().y);
-                if (CheckCollisionRecs(crateRect, bulletRect)) {
+                if (PlayerTurret.bullets[i]->hitbox.Overlaps(Crate.hitbox)) {
                     delete PlayerTurret.bullets[i]->Sprite;
                     PlayerTurret.bullets[i]->Sprite = nullptr;
                     delete PlayerTurret.bullets[i];
                     PlayerTurret.bullets[i] = nullptr;
+                    std::cout << "Collision Detected\n";
+                }
+                else {
+                    std::cout << "No collision\nCrate Loc: " << Crate.hitbox.Center().ToString() << "\nBullet Loc: " << PlayerTurret.bullets[i]->hitbox.Center().ToString() << "\n";
                 }
             }
         }

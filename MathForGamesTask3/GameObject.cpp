@@ -2,6 +2,8 @@
 
 void GameObject::OnUpdate(float deltaTime)
 {
+    //hitbox.SetVars(GetWorldPosition() - (Sprite.width / 2), turretWorldPos + (tmpSprite.height / 2))
+    //std::cout << "Setting hitbox\n";
 }
 
 void GameObject::OnDraw()
@@ -20,7 +22,7 @@ GameObject::GameObject()
 void GameObject::Update(float deltaTime)
 {
     OnUpdate(deltaTime);
-    
+    //hitbox.SetVars(GetWorldPosition() - 20, GetWorldPosition() + 20);
 }
 
 void GameObject::Draw()
