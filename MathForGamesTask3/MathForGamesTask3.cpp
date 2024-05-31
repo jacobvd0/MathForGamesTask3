@@ -4,8 +4,6 @@
 #include "TankPlayer.h"
 #include "TankTurret.h"
 
-// TODO: make an array with all objects in it then pass to bullets so the collision checks can be done in TankBullet.cpp
-
 int main()
 {
     // Creating the raylib window

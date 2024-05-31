@@ -35,11 +35,24 @@ struct AABB {
 		}
 
 	}
+
+	void Fit(const std::vector<Vector3>& points) {
+		min = { FLT_MAX, FLT_MAX, 0 };
+		max = { -FLT_MAX, -FLT_MAX, 0 };
+
+		for (auto& p : points) {
+			min = utils.min(min, p);
+			max = utils.max(max, p);
+		}
+	}
+
 	bool Overlaps(const Vector3& p) const
 	{
-		// test for not overlapped as it exits faster
-		return !(p.x < min.x || p.y < min.y ||
-			p.x > max.x || p.y > max.y);
+		return !(p.x < min.x || p.y < min.y || p.x > max.x || p.y > max.y);
+	}
+
+	Vector3 ClosestPoint(const Vector3& p) {
+		return utils.clamp(p, min, max);
 	}
 };
 
