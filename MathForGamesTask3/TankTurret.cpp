@@ -36,7 +36,6 @@ void TankTurret::OnUpdate(float deltaTime)
 					raylib::Texture2D tmpSprite("res/bulletBlue1_outline.png");
 
 					bullets[i]->hitbox.SetVars(bullets[i]->GetWorldPosition() - (tmpSprite.width / 2), bullets[i]->GetWorldPosition() + (tmpSprite.height / 2));
-					std::cout << "Bullet hitbox created\n Center: " << bullets[i]->hitbox.Center().ToString() << "\n Min: " << bullets[i]->hitbox.min.ToString() << "\n Max: " << bullets[i]->hitbox.max.ToString() << "\n";
 					success = true;
 					cooldownTimer = 0;
 					break;

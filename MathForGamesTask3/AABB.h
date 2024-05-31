@@ -13,7 +13,6 @@ struct AABB {
 	void SetVars(const math::Vector3& _min, const math::Vector3& _max) {
 		min = _min;
 		max = _max;
-		//std::cout << "Set min to " << _min.ToString() << " and max to " << _max.ToString() << "\n";
 	}
 
 	math::Vector3 Center() const {

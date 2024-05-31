@@ -42,7 +42,6 @@ int main()
 
     // Screen hitbox collider
     AABB ScreenHitbox(math::Vector3(0, 0, 0), math::Vector3(screenWidth, screenHeight, 0));
-    std::cout << ScreenHitbox.Center().ToString() << "\n";
 
     // Game Loop
     while (!window.ShouldClose()) {
@@ -58,10 +57,6 @@ int main()
                     PlayerTurret.bullets[i]->Sprite = nullptr;
                     delete PlayerTurret.bullets[i];
                     PlayerTurret.bullets[i] = nullptr;
-                    std::cout << "Collision Detected\n";
-                }
-                else {
-                    std::cout << "No collision\nCrate Loc: " << Crate.hitbox.Center().ToString() << "\nBullet Loc: " << PlayerTurret.bullets[i]->hitbox.Center().ToString() << "\n";
                 }
             }
         }
