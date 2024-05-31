@@ -36,6 +36,7 @@ void TankTurret::OnUpdate(float deltaTime)
 					raylib::Texture2D tmpSprite("res/bulletBlue1_outline.png");
 
 					bullets[i]->hitbox.SetVars(bullets[i]->GetWorldPosition() - (tmpSprite.width / 2), bullets[i]->GetWorldPosition() + (tmpSprite.height / 2));
+					std::cout << "Bullet hitbox created\n Center: " << bullets[i]->hitbox.Center().ToString() << "\n Min: " << bullets[i]->hitbox.min.ToString() << "\n Max: " << bullets[i]->hitbox.max.ToString() << "\n";
 					success = true;
 					cooldownTimer = 0;
 					break;
@@ -63,22 +64,22 @@ void TankTurret::OnUpdate(float deltaTime)
 			}
 
 			// Checking if the bullet goes past the left and top of the screen
-			else if (bullets[i]->GetLocalPosition().x <= -10 || bullets[i]->GetLocalPosition().y <= -10) {
-				delete bullets[i]->Sprite;
-				bullets[i]->Sprite = nullptr;
+			//else if (bullets[i]->GetLocalPosition().x <= -10 || bullets[i]->GetLocalPosition().y <= -10) {
+			//	delete bullets[i]->Sprite;
+			//	bullets[i]->Sprite = nullptr;
 
-				delete bullets[i];
-				bullets[i] = nullptr;
-			}
+			//	delete bullets[i];
+			//	bullets[i] = nullptr;
+			//}
 		
-			// Checking if the bullet goes past the right and bottom of the screen
-			else if (bullets[i]->GetLocalPosition().x >= (screenWidth + 10) || bullets[i]->GetLocalPosition().y >= (screenHeight + 10)) {
-				delete bullets[i]->Sprite;
-				bullets[i]->Sprite = nullptr;
+			//// Checking if the bullet goes past the right and bottom of the screen
+			//else if (bullets[i]->GetLocalPosition().x >= (screenWidth + 10) || bullets[i]->GetLocalPosition().y >= (screenHeight + 10)) {
+			//	delete bullets[i]->Sprite;
+			//	bullets[i]->Sprite = nullptr;
 
-				delete bullets[i];
-				bullets[i] = nullptr;
-			}
+			//	delete bullets[i];
+			//	bullets[i] = nullptr;
+			//}
 
 			// Updates the bullet
 			else {
